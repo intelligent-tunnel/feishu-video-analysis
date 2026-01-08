@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: feishu-video-analysis
+
+logging:
+  level:
+    root: INFO
+    com.geekonup: DEBUG
+
+feishu:
+  verify-token: "TFphDchdYwTTwBNfXPeXwsVX3t24HXdW"
+
