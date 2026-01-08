@@ -1,6 +1,5 @@
 package com.geekonup.service.controller;
 
-import com.geekonup.common.result.Result;
 import com.geekonup.service.dto.response.VideoAnalysisResponse;
 import com.geekonup.service.service.FeishuVideoAnalysisService;
 import com.geekonup.service.dto.request.VideoAnalyzeRequest;
@@ -15,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collections;
+import java.util.Map;
 
 /**
  * 视频分析控制器
@@ -31,8 +33,8 @@ public class VideoAnalysisController {
     private final FeishuVideoAnalysisService videoAnalysisService;
 
     @PostMapping("/analyze")
-    public ResponseEntity<Result<VideoAnalysisResponse>> analyze(@RequestBody VideoAnalyzeRequest request,
-                                                                 HttpServletRequest httpRequest) {
+    public ResponseEntity<Map<String, VideoAnalysisResponse>> analyze(@RequestBody VideoAnalyzeRequest request,
+                                                                        HttpServletRequest httpRequest) {
         log.info("======== 收到分析请求 ========");
         log.info("请求IP: {}", httpRequest.getRemoteAddr());
         log.info("请求体: videoName={}, question={}, prompt={}",
@@ -42,10 +44,11 @@ public class VideoAnalysisController {
         if (!StringUtils.hasText(tokenFromHeader) || !tokenFromHeader.equals(verifyToken)) {
             log.warn("Token 校验失败: {}", tokenFromHeader);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Result.error("invalid token"));
+                    .body(Collections.singletonMap("data", null));
         }
 
-        return ResponseEntity.ok(Result.success(videoAnalysisService.handleAnalysis(request)));
+        VideoAnalysisResponse response = videoAnalysisService.handleAnalysis(request);
+        return ResponseEntity.ok(Collections.singletonMap("data", response));
     }
 }
 

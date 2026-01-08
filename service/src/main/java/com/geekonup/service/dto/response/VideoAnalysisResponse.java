@@ -11,7 +11,7 @@ public class VideoAnalysisResponse {
     /**
      * 接口返回状态码
      */
-    private Integer statusCode;
+    private StatusCode statusCode;
 
     /**
      * 素材总结
