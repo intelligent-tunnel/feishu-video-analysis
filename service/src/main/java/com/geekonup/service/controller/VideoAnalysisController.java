@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 飞书自动化视频分析
+ * 视频分析控制器
  */
 @Slf4j
 @RestController

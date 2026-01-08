@@ -4,7 +4,7 @@ import com.geekonup.service.dto.request.VideoAnalyzeRequest;
 import com.geekonup.service.dto.response.VideoAnalysisResponse;
 
 /**
- * 飞书视频分析服务接口
+ * 飞书视频分析服务
  */
 public interface FeishuVideoAnalysisService {
 
