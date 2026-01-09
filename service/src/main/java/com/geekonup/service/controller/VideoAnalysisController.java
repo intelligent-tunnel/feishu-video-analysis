@@ -37,8 +37,7 @@ public class VideoAnalysisController {
                                                                         HttpServletRequest httpRequest) {
         log.info("======== 收到分析请求 ========");
         log.info("请求IP: {}", httpRequest.getRemoteAddr());
-        log.info("请求体: videoName={}, question={}, prompt={}",
-                request.videoName(), request.question(), request.prompt());
+        log.info("请求体: videoName={}", request.videoName());
         // 简单校验
         String tokenFromHeader = httpRequest.getHeader("X-Feishu-Token");
         if (!StringUtils.hasText(tokenFromHeader) || !tokenFromHeader.equals(verifyToken)) {

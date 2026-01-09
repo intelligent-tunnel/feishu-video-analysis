@@ -52,6 +52,8 @@
         <hutool.version>5.8.36</hutool.version>
         <!-- fastjson -->
         <fastjson.version>2.0.56</fastjson.version>
+        <!-- OpenAI -->
+        <openai.version>0.40.1</openai.version>
     </properties>
 
     <dependencyManagement>
@@ -155,6 +157,12 @@
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <!-- OpenAI -->
+            <dependency>
+                <groupId>com.openai</groupId>
+                <artifactId>openai-java</artifactId>
+                <version>${openai.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -12,4 +12,83 @@ logging:
 
 feishu:
   verify-token: "TFphDchdYwTTwBNfXPeXwsVX3t24HXdW"
+  bitable:
+    # 飞书应用凭证（用于获取 tenant_access_token）
+    app-id: ""  # 飞书应用的 App ID
+    app-secret: ""  # 飞书应用的 App Secret
+    # 多维表格信息
+    app-token: ""  # 多维表格的 App Token（在表格URL中可以看到）
+    table-id: ""  # 数据表的 Table ID
+    # 字段映射（根据多维表格字段名称配置）
+    field-mapping:
+      markdown-report: "分析报告"  # 阶段一的 Markdown 分析报告
+      # 以下字段为阶段二的 JSON 结构化结果（当前未使用，保留以备后续需要）
+      # edit-conclusion: "剪辑结论"
+      # edit-priority: "剪辑优先级"
+      # video-summary: "视频总结"
+      # content-tags: "内容标签"
+      # core-value: "核心价值"
+      # edit-structure-suggestion: "剪辑结构建议"
+      # highlight-slices: "高光切片"
+      # emotional-intensity: "情感强度"
+
+ai:
+  # OpenAI API配置
+  api-key: "sk-ef0c09a0344540608ac6a92d842007c2"
+  base-url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  # 阶段一：视频理解模型（带视觉能力）
+  step1-model: "qwen3-vl-plus"
+  # 阶段二：文本理解/结构化模型
+  step2-model: "qwen-max"
+  # Prompt 文件路径（可在不同环境中调整）
+  prompt1-path: "D:\\nas\\prompt\\prompt1.txt"
+  prompt2-path: "D:\\nas\\prompt\\prompt2.txt"
+
+ffmpeg:
+  # FFmpeg 可执行文件路径
+  # 选项：
+  #   - "ffmpeg" (如果已添加到系统 PATH)
+  #   - "D:\\ffmpeg\\bin\\ffmpeg.exe" (Windows 完整路径)
+  #   - "/usr/bin/ffmpeg" (Linux/Mac 路径)
+  path: "ffmpeg"
+  
+  # 视频文件目录
+  # 选项：
+  #   - "D:\\nas" (Windows 路径)
+  #   - "/mnt/nas" (Linux 路径)
+  #   - "/Volumes/nas" (Mac 路径)
+  video-dir: "D:\\nas"
+  
+  # 压缩超时时间（秒）
+  # 选项：
+  #   - 3600 (1小时，适合大文件)
+  #   - 1800 (30分钟，推荐)
+  #   - 600 (10分钟，适合小文件)
+  timeout: 3600
+  
+  compression:
+    # 目标分辨率
+    # 选项：
+    #   - "1920:1080" (1080P，推荐)
+    #   - "1280:720" (720P)
+    #   - "3840:2160" (4K)
+    #   - "854:480" (480P)
+    resolution: "1280:720"
+    
+    # 目标帧率
+    # 选项：
+    #   - 24 (电影标准，推荐)
+    #   - 30 (电视标准)
+    #   - 60 (高帧率，流畅)
+    #   - 15 (低帧率，文件更小)
+    frame-rate: 24
+    
+    # 质量因子（CRF - Constant Rate Factor）
+    # 选项：
+    #   - 18 (几乎无损，文件大，适合专业存档)
+    #   - 20 (极高画质，文件较大，适合成片)
+    #   - 23 (推荐平衡值，通用发布)
+    #   - 25 (可接受画质，文件较小，适合社交平台)
+    #   - 28 (明显压缩，文件很小，适合预览/测试)
+    crf: 25
 

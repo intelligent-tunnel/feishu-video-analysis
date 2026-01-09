@@ -6,10 +6,8 @@ package com.geekonup.service.dto.request;
 public record VideoAnalyzeRequest(
         /* 视频名称 */
         String videoName,
-        /* 提问 */
-        String question,
-        /* Prompt */
-        String prompt
+        /* 飞书多维表格记录ID（用于异步更新结果） */
+        String recordId
 ) {
 }
 
